@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/moving_goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ground.tres" type="TileSet" id=2]
@@ -7,16 +7,8 @@
 [ext_resource path="res://objects/door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/title.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://editfiles/scifitiles-sheet.png" type="Texture" id=8]
+[ext_resource path="res://blocks.tres" type="TileSet" id=8]
 [ext_resource path="res://objects/laser.tscn" type="PackedScene" id=9]
-
-
-
-
-
-
-
-
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://fonts/LiberationSans-Regular.ttf"
@@ -25,66 +17,6 @@ font_path = "res://fonts/LiberationSans-Regular.ttf"
 size = 23
 use_filter = true
 font_data = SubResource( 1 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
-
-[sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
-
-[sub_resource type="TileSet" id=7]
-0/name = "scifitiles-sheet.png 0"
-0/texture = ExtResource( 8 )
-0/tex_offset = Vector2( 0, -16 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 80, 128, 48 )
-0/tile_mode = 2
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 32, 48 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 3 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 3 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 1, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 4 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 2, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 5 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 3, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 6 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
 
 [node name="Level" type="Node"]
 
@@ -121,7 +53,7 @@ tile_data = PoolIntArray( 0, 0, 8, 1, 0, 10, 2, 0, 10, 3, 0, 10, 4, 0, 10, 5, 0,
 
 [node name="Blocks" type="TileMap" parent="."]
 z_index = 2
-tile_set = SubResource( 7 )
+tile_set = ExtResource( 8 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_y_sort = true
@@ -131,10 +63,14 @@ tile_data = PoolIntArray( 11, 0, 3, 65547, 0, 0, 131083, 0, 0, 196619, 0, 0, 196
 [node name="RedDoor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 496, 152 )
 n_open = 2
+color = "red"
+orientation = "vertical"
 
 [node name="BlueDoor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 368, 152 )
+n_open = 1
 color = "blue"
+orientation = "vertical"
 
 [node name="MovingGoal" parent="." instance=ExtResource( 1 )]
 position = Vector2( 576, 152 )
@@ -144,9 +80,11 @@ next_level = "res://levels/level_0.tscn"
 
 [node name="RedButton" parent="Buttons" instance=ExtResource( 3 )]
 position = Vector2( 240, 304 )
+color = "red"
 
 [node name="RedButton2" parent="Buttons" instance=ExtResource( 3 )]
 position = Vector2( 240, 48 )
+color = "red"
 
 [node name="BlueButton" parent="Buttons" instance=ExtResource( 3 )]
 position = Vector2( 304, 272 )
