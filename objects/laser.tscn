@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://objects/laser.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/circle.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/begin.png" type="Texture" id=3]
+
+
+
+
+
+
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.526627, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 80.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = -120.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.7
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[node name="Laser" type="RayCast2D"]
+position = Vector2( 6, 0 )
+z_index = 1
+cast_to = Vector2( 3000, 0 )
+collision_mask = 11
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 64, 0 )
+width = 5.0
+default_color = Color( 1, 0.269531, 0.269531, 1 )
+
+[node name="CollisionParticles" type="Particles2D" parent="."]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+lifetime = 0.3
+process_material = SubResource( 5 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.447059, 0.447059, 0.447059, 1 )
+position = Vector2( -6, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+offset = Vector2( 8, 0 )

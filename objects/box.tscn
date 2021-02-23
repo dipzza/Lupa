@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 32 )
+
+[node name="Box" type="RigidBody2D" groups=[
+"Pushable",
+]]
+position = Vector2( 499, 509 )
+collision_layer = 16
+collision_mask = 11
+mode = 2
+physics_material_override = SubResource( 1 )
+linear_damp = 10.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
