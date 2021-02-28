@@ -3,8 +3,6 @@
 [ext_resource path="res://objects/door.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/door_redvertical.png" type="Texture" id=2]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 32 )
 

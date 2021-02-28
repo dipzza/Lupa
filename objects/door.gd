@@ -4,7 +4,7 @@ extends StaticBody2D
 export(int) var n_open = 1
 export(String, "red", "blue", "green") var color = "red"
 export(String, "vertical", "horizontal") var orientation = "vertical"
-
+var shape = RectangleShape2D.new()
 onready var n_pressed = 0
 
 func _ready():
@@ -18,15 +18,17 @@ func _ready():
 		$UpperHalf.offset = Vector2(0, -20)
 		$LowerHalf.offset = Vector2(0, 20)
 		
-		$CollisionShape2D.shape.extents = Vector2(7, 32)
+		shape.extents = Vector2(7, 32)
 		$CollisionShape2D.position = Vector2(0, 8)
+		$CollisionShape2D.set_shape(shape)
 	else:
 		$UpperHalf.region_rect = Rect2(0, 8, 64, 16)
 		$LowerHalf.region_rect = Rect2(0, 24, 64, 32)
 		$UpperHalf.offset = Vector2(0, -16)
 		$LowerHalf.offset = Vector2(0, 8)
 		
-		$CollisionShape2D.shape.extents = Vector2(32, 8)
+		shape.extents = Vector2(32, 8)
+		$CollisionShape2D.set_shape(shape)
 
 func _process(_delta):
 	if Engine.editor_hint:
@@ -40,16 +42,18 @@ func _process(_delta):
 			$UpperHalf.offset = Vector2(0, -20)
 			$LowerHalf.offset = Vector2(0, 20)
 			
-			$CollisionShape2D.shape.extents = Vector2(7, 32)
+			shape.extents = Vector2(7, 32)
 			$CollisionShape2D.position = Vector2(0, 8)
+			$CollisionShape2D.set_shape(shape)
 		else:
 			$UpperHalf.region_rect = Rect2(0, 8, 64, 16)
 			$LowerHalf.region_rect = Rect2(0, 24, 64, 32)
 			$UpperHalf.offset = Vector2(0, -16)
 			$LowerHalf.offset = Vector2(0, 8)
 			
-			$CollisionShape2D.shape.extents = Vector2(32, 8)
+			shape.extents = Vector2(32, 8)
 			$CollisionShape2D.position = Vector2(0, 0)
+			$CollisionShape2D.set_shape(shape)
 
 func _on_Button_body_entered(_body):
 	n_pressed += 1

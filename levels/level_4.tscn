@@ -78,15 +78,10 @@ color = "red"
 
 [node name="DoorRed" parent="." instance=ExtResource( 10 )]
 position = Vector2( 336, -264 )
-n_open = 1
-color = "red"
-orientation = "vertical"
 
 [node name="DoorBlue" parent="." instance=ExtResource( 10 )]
 position = Vector2( 336, 152 )
-n_open = 1
 color = "blue"
-orientation = "vertical"
 
 [node name="Jajaxd" type="Label" parent="."]
 margin_left = 32.0
