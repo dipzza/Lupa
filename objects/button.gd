@@ -11,8 +11,8 @@ func _process(_delta):
 	if Engine.editor_hint:
 		$AnimatedSprite.animation = color
 
-func _on_Button_body_entered(body):
+func _on_Button_body_entered(_body):
 	$AnimatedSprite.animation = "{}_pressed".format([color], "{}")
 
-func _on_Button_body_exited(body):
+func _on_Button_body_exited(_body):
 	$AnimatedSprite.animation = color
